@@ -1,6 +1,14 @@
 import React from 'react';
 
 class Item extends React.Component {
+	handleReviewClick = () => {
+		this.props.moveToReview(this.props.index, this.props.details);
+	};
+
+	handleCompletedClick = () => {
+		this.props.moveToCompleted(this.props.index, this.props.details);
+	};
+
 	render() {
 
 		let { date, itemName, indexPage, developer, flag } = this.props.details;
@@ -18,6 +26,7 @@ class Item extends React.Component {
 				<div className="itemname">{itemName}</div>
 				<div>Index Page: {indexPage}</div>
 				<div>{developer}</div>
+				<button className={this.props.status} onClick={this.props.status=="inReview"? this.handleCompletedClick : this.handleReviewClick}>{this.props.status=="inReview"? "Completed" : "In Review"}</button>
 			</div>
 		)
 	}
