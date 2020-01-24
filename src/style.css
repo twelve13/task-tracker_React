@@ -75,3 +75,39 @@ body {
 .itemname {
 	font-weight: bold;
 }
+
+.form-area {
+	align-content: flex-start;
+	border-left: solid 10px #666;
+	box-sizing: border-box;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin-top: 20px;
+	width: 20%;
+}
+
+.form-area h2 {
+	text-align: center;
+	width: 100%;
+}
+
+.add-item-form, .select-dev-form {
+	width: 200px;
+}
+
+.add-item-form input {
+	padding: 5px;
+}
+
+.add-item-form select, .select-dev-form select {
+	padding: 5px;
+	width: 183px;
+}
+
+.add-item-form button, .select-dev-form button {
+	background-color: #36c996;
+	color: white;
+	margin-top: 20px;
+	padding: 5px;
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './components/Header';
 import Item from './components/Item';
+import AddItemForm from './components/AddItemForm';
 import data from './data';
 
 class App extends React.Component {
@@ -12,6 +13,15 @@ class App extends React.Component {
     console.log(data)
     this.setState({ upcoming: data });
   }
+
+  addItem = (item) => {
+    const upcoming = {...this.state.upcoming};
+    //add the new item to the items variable using date.now to generate a unique key
+    upcoming[`items${Date.now()}`] = item;
+    this.setState({
+      upcoming
+    })
+  };
 
   render() {
     return (
@@ -37,6 +47,10 @@ class App extends React.Component {
             <div className="completed">
               <h2>Completed</h2>
             </div>
+          </div>
+          <div className="form-area">
+            <h2>Add New Item</h2>
+            <AddItemForm addItem = {this.addItem} />
           </div>
         </div>
       </div>
