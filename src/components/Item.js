@@ -6,6 +6,11 @@ class Item extends React.Component {
 		let { date, itemName, indexPage, developer, flag } = this.props.details;
 
 		let className = "item";
+		if (flag=="priority") {
+			className += " priority";
+		} else if (flag=="same-day") {
+			className += " same-day";
+		}
 
 		return (
 			<div className={className}>
