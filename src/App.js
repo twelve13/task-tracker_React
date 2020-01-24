@@ -2,13 +2,15 @@ import React from 'react';
 import Header from './components/Header';
 import Item from './components/Item';
 import AddItemForm from './components/AddItemForm';
+import SelectDevForm from './components/SelectDevForm';
 import data from './data';
 
 class App extends React.Component {
   state = {
     upcoming: {},
     review: {},
-    completed: {}
+    completed: {},
+    selectedDev: ""
   };
 
   componentDidMount() {
@@ -50,6 +52,14 @@ class App extends React.Component {
     })
   };
 
+  selectDev = (chosenDev) => {
+    let selectedDev = {...this.state.selectedDev};
+    selectedDev = chosenDev;
+    this.setState({
+      selectedDev
+    })
+  };
+
   render() {
     return (
       <div>
@@ -66,6 +76,7 @@ class App extends React.Component {
                     details={this.state.upcoming[key]}
                     moveToReview={this.moveToReview}
                     moveToCompleted={this.moveToCompleted}
+                    chosenDev={this.state.selectedDev}
                   />
                 ))}
               </ul>
@@ -80,6 +91,7 @@ class App extends React.Component {
                     details={this.state.review[key]}
                     status="inReview"
                     moveToCompleted={this.moveToCompleted}
+                    chosenDev={this.state.selectedDev}
                   />
                 ))}
               </ul>
@@ -93,6 +105,7 @@ class App extends React.Component {
                     index={key}
                     details={this.state.completed[key]}
                     status="completed"
+                    chosenDev={this.state.selectedDev}
                   />
                 ))}
               </ul>
@@ -101,6 +114,8 @@ class App extends React.Component {
           <div className="form-area">
             <h2>Add New Item</h2>
             <AddItemForm addItem = {this.addItem} />
+            <h2 className="highlight-form-area">Highlight by Dev Name</h2>
+            <SelectDevForm selectDev={this.selectDev} />
           </div>
         </div>
       </div>

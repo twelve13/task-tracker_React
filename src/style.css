@@ -115,3 +115,15 @@ body {
 button.completed {
 	display: none;
 }
+
+.select-dev-form button {
+	background-color: #50f;
+}
+
+.highlight-form-area {
+	margin-top: 60px;
+}
+
+.highlight {
+	border: solid 5px #50f;
+}

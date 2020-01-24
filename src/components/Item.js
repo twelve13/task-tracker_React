@@ -20,6 +20,10 @@ class Item extends React.Component {
 			className += " same-day";
 		}
 
+		if (this.props.chosenDev == developer) {
+			className += " highlight"
+		}
+
 		return (
 			<div className={className}>
 				<div>{date}</div>
