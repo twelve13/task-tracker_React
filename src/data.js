@@ -49,3 +49,5 @@ const items = {
 		flag: "standard"
 	}
 }
+
+export default items;

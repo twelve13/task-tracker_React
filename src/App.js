@@ -1,26 +1,47 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Header from './components/Header';
+import Item from './components/Item';
+import data from './data';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    upcoming: {}
+  };
+
+  componentDidMount() {
+    console.log(data)
+    this.setState({ upcoming: data });
+  }
+
+  render() {
+    return (
+      <div>
+        <Header tagline="Teamwork makes the dream work" />
+        <div className="wrapper">
+          <div className="main">
+            <div className="upcoming">
+              <h2>Upcoming Publications</h2>
+              <ul className="items-list">
+                {Object.keys(this.state.upcoming).map(key => (
+                  <Item 
+                    key={key}
+                    index={key}
+                    details={this.state.upcoming[key]}
+                  />
+                ))}
+              </ul>
+            </div>
+            <div className="review">
+              <h2>In Review</h2>
+            </div>
+            <div className="completed">
+              <h2>Completed</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
 }
 
 export default App;
