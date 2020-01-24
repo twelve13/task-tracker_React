@@ -15,19 +15,22 @@ class SelectDevForm extends React.Component {
 	}
 	render() {
 		return (
-			<form className="select-dev-form" onSubmit={this.selectDev}>
-				<select name="developer" ref={this.devRef}>
-					<option value="">--Select Dev</option>
-					<option value="Bob">Bob</option>
-					<option value="Linda">Linda</option>
-					<option value="Tina">Tina</option>
-					<option value="Gene">Gene</option>
-					<option value="Louise">Louise</option>
-					<option value="Teddy">Teddy</option>
-					<option value="Gayle">Gayle</option>
-				</select>
-				<button type="submit">Select</button>
-			</form>
+			<div>
+				<h2 className="highlight-form-area">Highlight by Dev Name</h2>
+				<form className="select-dev-form" onSubmit={this.selectDev}>
+					<select name="developer" ref={this.devRef}>
+						<option value="">--Select Dev</option>
+						<option value="Bob">Bob</option>
+						<option value="Linda">Linda</option>
+						<option value="Tina">Tina</option>
+						<option value="Gene">Gene</option>
+						<option value="Louise">Louise</option>
+						<option value="Teddy">Teddy</option>
+						<option value="Gayle">Gayle</option>
+					</select>
+					<button type="submit">Select</button>
+				</form>
+			</div>
 		)
 	}
 };

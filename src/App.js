@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Item from './components/Item';
 import AddItemForm from './components/AddItemForm';
 import SelectDevForm from './components/SelectDevForm';
+import AddItemButton from './components/AddItemButton';
 import data from './data';
 
 class App extends React.Component {
@@ -10,7 +11,8 @@ class App extends React.Component {
     upcoming: {},
     review: {},
     completed: {},
-    selectedDev: ""
+    selectedDev: "",
+    toggled: false
   };
 
   componentDidMount() {
@@ -60,6 +62,13 @@ class App extends React.Component {
     })
   };
 
+  toggleForm = () => {
+    let toggled=this.state.toggled;
+    this.setState({
+      toggled: !toggled
+    })
+  }
+
   render() {
     return (
       <div>
@@ -68,6 +77,7 @@ class App extends React.Component {
           <div className="main">
             <div className="upcoming">
               <h2>Upcoming Publications</h2>
+              <AddItemButton toggleForm = {this.toggleForm} buttonText = {this.state.toggled}/>
               <ul className="items-list">
                 {Object.keys(this.state.upcoming).map(key => (
                   <Item 
@@ -112,10 +122,10 @@ class App extends React.Component {
             </div>
           </div>
           <div className="form-area">
-            <h2>Add New Item</h2>
-            <AddItemForm addItem = {this.addItem} />
-            <h2 className="highlight-form-area">Highlight by Dev Name</h2>
-            <SelectDevForm selectDev={this.selectDev} />
+            <div className={this.state.toggled? 'show-me' : 'hide-me'}>
+              <AddItemForm addItem = {this.addItem} />
+              <SelectDevForm selectDev={this.selectDev} />
+            </div>
           </div>
         </div>
       </div>
